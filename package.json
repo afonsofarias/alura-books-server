@@ -1,0 +1,19 @@
+{
+  "name": "alura-books-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afonsofarias/alura-books-server.git"
+  },
+  "author": "Afonso Farias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afonsofarias/alura-books-server/issues"
+  },
+  "homepage": "https://github.com/afonsofarias/alura-books-server#readme"
+}
