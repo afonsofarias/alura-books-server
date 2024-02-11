@@ -1,5 +1,5 @@
 const fs = require( "fs" )
-const { getTodosLivros, getLivroPorId, insereLivro, modificaLivro, apagaLivro } = require( "../servicos/livro" )
+const { getTodosLivros, getLivroPorId, insereLivro, modificaLivro, apagaLivro, deletaLivroPorId } = require( "../servicos/livro" )
 
 function getLivros ( req, res ) {
     try {
@@ -14,8 +14,14 @@ function getLivros ( req, res ) {
 function getLivro ( req, res ) {
     try {
         const id = req.params.id
-        const livro = getLivroPorId( id )
-        res.send( livro )
+        if ( id && Number( id ) ) {
+            const livro = getLivroPorId( id )
+            res.send( livro )
+        } else {
+            res.status( 422 )
+            res.send( "Id Inválido!" )
+        }
+
     } catch ( error ) {
         res.status( 500 )
         res.send( error.message )
@@ -37,11 +43,16 @@ function postLivro ( req, res ) {
 function patchLivro ( req, res ) {
     try {
         const id = req.params.id
-        const body = req.body
+        if ( id && Number( id ) ) {
+            const body = req.body
 
-        modificaLivro( body, id )
-        res.status( 201 )
-        res.send( "Livro modificado com sucesso!!!" )
+            modificaLivro( body, id )
+            res.status( 201 )
+            res.send( "Livro modificado com sucesso!!!" )
+        } else {
+            res.status( 422 )
+            res.send( "Id Inválido!" )
+        }
     } catch ( error ) {
         res.status( 500 )
         res.send( error.message )
@@ -51,14 +62,19 @@ function patchLivro ( req, res ) {
 function deleteLivro ( req, res ) {
     try {
         const id = req.params.id
-        const body = req.body
 
-        apagaLivro( body, id )
-        res.status( 201 )
-        res.send( "Livro removido com sucesso!!!" )
+        if ( id && Number( id ) ) {
+            deletaLivroPorId( id )
+            res.send( "livro deletado com sucesso!!!" )
+            res.status( 201 )
+        } else {
+            res.status( 422 )
+            res.send( "Id Inválido!" )
+        }
+
     } catch ( error ) {
         res.status( 500 )
-        res.send( error.message )
+        res.send( { error } )
     }
 }
 
