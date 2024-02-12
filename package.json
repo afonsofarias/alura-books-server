@@ -6,19 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/afonsofarias/alura-books-server.git"
-  },
-  "author": "Afonso Farias",
+  "author": "Bernardo Severo",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/afonsofarias/alura-books-server/issues"
-  },
-  "homepage": "https://github.com/afonsofarias/alura-books-server#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "nodemon": "^3.0.3"
+    "nodemon": "^2.0.20"
   }
 }
